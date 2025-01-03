@@ -17,7 +17,7 @@ using DataFrames
 using Statistics
 
 export import_and_merge_datasets, def_logs, replace_na_with_zeros,
-    standardise_var, generate_moving_average
+    standardise_var, generate_moving_average, get_lags
 
     """
     import_and_merge_datasets() -> DataFrame
@@ -169,58 +169,115 @@ df_standardized = standardise_var(df, varlist)
         return df
     end
 
-    """
-    generate_moving_average(df::DataFrame, varlist::Vector{String}, intervals::Vector{Int}) -> DataFrame
+"""
+    generate_moving_average(df::DataFrame, varlist::Vector{String}, intervals::Vector; direction=:leads) -> DataFrame
 
-Generates moving averages for the specified variables in the DataFrame over the given intervals.
+Generates moving averages for the specified variables in the DataFrame over the given intervals. Supports both lead and lag moving averages. Missing values are not skipped to match Stata behavior.
 
 # Arguments
 - `df::DataFrame`: The input DataFrame.
-- `varlist::Vector{String}`: A list of column names for which to generate moving averages.
-- `intervals::Vector{Int}`: A vector of interval lengths for the moving averages.
+- `varlist::Vector{String}`: A list of column names to calculate the moving averages for.
+- `intervals::Vector`: A vector of intervals (either integers or ranges) specifying the number of periods for the moving average.
+- `direction::Symbol`: The direction of the moving average. It can be `:lags` (averaging over previous periods) or `:leads` (averaging over future periods, default is `:leads`).
 
 # Returns
-A `DataFrame` with the moving averages added as new columns. The original DataFrame remains unchanged.
+A `DataFrame` with the original columns and additional columns containing the calculated moving averages.
 
 # Example
+
 ```julia
-using DataFrames
-using Statistics
-
-# Sample DataFrame
-df = DataFrame(attacks = rand(1:100, 100), deaths = rand(1:100, 100))
-
-# List of variables to generate moving averages for
-varlist = ["attacks", "deaths"]
-
-# Vector of interval lengths
-intervals = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 21, 28]
-
-# Generate moving averages
-df_with_averages = generate_moving_average(df, varlist, intervals)
-
-# Display the DataFrame with moving averages
-println(df_with_averages)
+df = DataFrame(A = [1, 2, 3, 4, 5], B = [5, 4, 3, 2, 1])
+varlist = ["A", "B"]
+intervals = [2, 3]
+df_with_moving_avg = generate_moving_average(df, varlist, intervals, direction=:lags)
 """
 
-    function generate_moving_average(df, varlist, intervals)
-        # Function to generate moving averages for the specified 
-        # variables in the DataFrame over the given intervals.
-        df_copy = copy(df)
-        for var in varlist
-            for interval in intervals
-                # Define the new column name for the moving average
-                new_col = Symbol(var, "in", interval)
+function generate_moving_average(df, varlist, intervals; direction=:leads)
+    # Function to generate moving averages for the specified 
+    # variables in the DataFrame over the given intervals.
+    # Missing values are not skipped when computing averages, to match Stata behaviour.
+    df_copy = copy(df)
     
-                # Calculate the moving average
-                df_copy[!, new_col] = [mean(skipmissing(df_copy[max(1, i-interval+1):i, var])) for i in 1:nrow(df_copy)]
+    # Check if the direction argument is valid
+    if direction != :lags && direction != :leads
+        throw(ArgumentError("Invalid direction. Choose either :lags or :leads"))
+    end
+
+    # Check max length - used for leads
+    max_lead = length(df_copy[:,1]) 
+    
+    for var in varlist
+        for interval in intervals
+            # Check if interval is a range or an integer
+            if typeof(interval) == Int
+                # Single integer, calculate moving average over 1 to interval
+                # Check if the average is for lags or leads
+
+                # Lags, moving average over last n periods
+                if direction == :lags
+                    # Define column name
+                    new_col = Symbol(var, "avg", interval)
+                    # Compute moving average, handling cases in which there aren't enough lags
+                    df_copy[!, new_col] = [i < interval ? missing : 
+                                            mean(df_copy[i-interval+1:i, var])
+                                            for i in 1:nrow(df_copy)]
+                end
+                
+                # Leads, moving average over last n periods
+                if direction == :leads
+                    # Define column name
+                    new_col = Symbol(var, "in", interval)
+                    # Compute moving average, handling cases in which there aren't enough leads
+                    df_copy[!, new_col] = [i + interval > max_lead ? missing : 
+                                            mean(df_copy[i+1:i+interval, var])
+                                            for i in 1:nrow(df_copy)]
+                end
+                
+            elseif typeof(interval) == UnitRange{Int64}
+                if direction == :leads
+                    # If range of integers, calculate moving average for the specific range
+                    start, stop = first(interval), last(interval)
+                    new_col = Symbol(var, "$(start)to$(stop)")
+                    
+                    # Calculate the moving average for the range
+                    df_copy[!, new_col] = [i + stop > max_lead ? missing :
+                                            mean(df_copy[i+start:i+stop, var])
+                                            for i in 1:nrow(df_copy)]
+                elseif direction == :lags
+                # Raise an error for unsupported types of intervals for lags
+                throw(ArgumentError("Unsupported range interval type for lags."))
+                end
+
+            else
+                # Raise an error for unsupported types in the intervals argument
+                throw(ArgumentError("Unsupported interval type: $(typeof(interval)). Make sure that you include only integers or ranges in your interval specification."))
             end
         end
-        return df_copy
-    end            
-        
+    end
+    
+    return df_copy
 end
 
+function get_lags(df, varlist, tdiffs)
+    # Function to generate lags or leads of selected variables
+    df_copy = copy(df)
+
+    for var in varlist
+        for t in tdiffs
+                # Define column name
+                new_col = Symbol(var, t)
+
+                # Get lag
+                df_copy[!, new_col] = [i <= t ? missing : 
+                                            df_copy[i-t, var]
+                                            for i in 1:nrow(df_copy)]
+        end
+    end
+    
+    return df_copy   
+end
+
+end
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
 
 
