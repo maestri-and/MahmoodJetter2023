@@ -12,7 +12,7 @@
 using Test
 using CSV
 using DataFrames
-using Main.MJWrangling
+using Main.Wrangling_funs
 
 # Temp
 # include("../src/data_wrangling.jl")
