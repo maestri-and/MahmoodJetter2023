@@ -13,23 +13,23 @@ using CSV
 using DataFrames
 using Statistics
 using Dates
-using ShiftedArrays
 include("submodules/wrangling_funs.jl")
-using Main.Wrangling_funs
+using .WranglingFuns
 
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
 #--------------------# 1. Importing and merging raw data #--------------------#
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
 
-mjdata = import_and_merge_datasets()
-
+dir = "data"
+csvnames = ["drones_data.csv", "anti-us_sentiment.csv", "GTD_and_SATP_data.csv", "news_sentiment.csv", "weather_data.csv"]
+mjdata = import_and_merge_csv_data(dir, csvnames, :date)
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
-#-----------------------------# 1. Wrangle data #-----------------------------#
+#-----------------------------# 2. Wrangle data #-----------------------------#
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
 
-# function wrangle_raw_mj_data()
+function wrangle_raw_mj_data!(mjdata)
     
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
 #  a. Replacing missing values, generating logs and standardizing variables   #
@@ -246,5 +246,7 @@ mjdata = import_and_merge_datasets()
     sort!(mjdata, :date)
     # mjdata.date_str .= Dates.format(mjdata.date, "yyyy-mm-dd")    
 
-# end
+    return mjdata
+
+end
 
