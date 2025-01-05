@@ -53,7 +53,7 @@ end
 
 
 # a. Test import procedure and integrity of data
-@testset "DataFrame Integrity" begin
+@testset "(Raw) DataFrame Integrity" begin
     # Create DataFrame from raw files
     dir = "data"
     csvnames = ["drones_data.csv", "anti-us_sentiment.csv", "GTD_and_SATP_data.csv", "news_sentiment.csv", "weather_data.csv"]
@@ -70,7 +70,7 @@ end
 end
 
 # b. Test integrity of wrangling module
-@testset "WranglingFuns integrity" begin
+@testset "WranglingFuns module integrity" begin
     # Create dummy dataset
     df = DataFrame(A = [0, 2, missing, 3, ℯ^2 -1], 
                     B = [1, 0, 4, missing, 2],
@@ -114,7 +114,7 @@ end
     # data outputted after Stata cleaning
 
     # Import both data
-    orig_mjdata = CSV.read("original_package/stata_orig_output_wrangled.csv", DataFrame) |> 
+    orig_mjdata = CSV.read("original_package/replication_package/stata_orig_output_wrangled.csv", DataFrame) |> 
     (df -> select!(df, Not(:v9)))
     dir = "data"
     csvnames = ["drones_data.csv", "anti-us_sentiment.csv", "GTD_and_SATP_data.csv", "news_sentiment.csv", "weather_data.csv"]
