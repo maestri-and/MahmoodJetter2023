@@ -21,3 +21,8 @@ data = import_and_merge_datasets("dataset1.csv", "dataset2.csv")
 # Example: Replacing missing values
 data = replace_na_with_zeros(data, [:column1, :column2])
 ```
+
+```@autodocs
+Modules = [MahmoodJetter2023.WranglingFuns]
+Order = [:function, :type]
+```

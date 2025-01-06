@@ -11,3 +11,8 @@ from Mahmood & Jetter (2023). It includes high-level functions that execute the 
 using RunningFuns
 run()
 ```
+
+```@autodocs
+Modules = [MahmoodJetter2023.RunningFuns]
+Order = [:function, :type]
+```

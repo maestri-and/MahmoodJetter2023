@@ -897,8 +897,5 @@ export replicate_sutex, generate_table1, create_multiple_model_table2,
         )
     end
 
-    """
-@docs
-generate_table1
-"""
+
 end

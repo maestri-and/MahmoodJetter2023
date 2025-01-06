@@ -969,10 +969,5 @@ generate_figure3(df_clean)
         process_analysis(dependent_vars, 14, labels, title_text_14, x_axis_title_14, ylim_14, yticks_step_14, xrotation_14, output_file_14, df_clean)
     end
 
-    """
-@docs
-run_regressions_figure3
-generate_figure3
-"""
 end
 

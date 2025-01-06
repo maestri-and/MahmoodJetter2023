@@ -25,3 +25,8 @@ generate_table1(data)
 # Example: Generating Table 2 with multiple models
 create_multiple_model_table2(models, "independent_var", ["Model 1", "Model 2"], [2, 4], [3, 5], "Table Title", "Subtitle", "Caption")
 ```
+
+```@autodocs
+Modules = [MahmoodJetter2023.TablesFuns]
+Order = [:function, :type]
+```

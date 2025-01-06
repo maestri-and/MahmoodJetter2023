@@ -23,3 +23,8 @@ using TestingFuns
 # Run all unit tests
 run_tests()
 ```
+
+```@autodocs
+Modules = [MahmoodJetter2023.TestingFuns]
+Order = [:function, :type]
+```

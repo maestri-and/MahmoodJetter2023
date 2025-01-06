@@ -37,3 +37,8 @@ generate_figure2a(data)
 results = run_regressions(data, "model_specification")
 plot = create_plot(results)
 ```
+
+```@autodocs
+Modules = [MahmoodJetter2023.FiguresFuns]
+Order = [:function, :type]
+```
