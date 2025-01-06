@@ -16,6 +16,7 @@ using Statistics
 using Printf
 using CovarianceMatrices
 using GLM
+using Base.Filesystem
 include("../src/WranglingFuns.jl")
 include("../src/TablesFuns.jl")
 include("../src/FiguresFuns.jl")
@@ -367,7 +368,7 @@ end
 
     # Validate that the computed intermediate results match the expected results
     for (i, col) in enumerate(table_content)
-        println("Testing model $i: $col")  # Log which model is being tested
+        # println("Testing model $i: $col")  # Log which model is being tested
         @test col == expected_table_content[i]  # Check row-wise equality
     end
 end
@@ -404,8 +405,12 @@ end
         script_dir = "output"
         output_filename = "binscatter.pdf"
         output_path = joinpath(script_dir, output_filename)
+        output_path_norm = normpath(output_path)
 
-        @test output_path == "output/binscatter.pdf"  # Verify that the file path matches the expected result.
+        # Expected path - make it dynamic for different filesystems
+        expected_path = normpath("output/binscatter.pdf")
+
+        @test output_path_norm == expected_path  # Verify that the file path matches the expected result.
     end
 end
 

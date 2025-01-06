@@ -1,15 +1,25 @@
 ###############################################################################
 #################################### RUN.JL ###################################
 
-######## This script runs the modules use to replicate the results in #########
+########## This script runs unit tests and replicate the results in ###########
 ########## Mahmood & Jetter (2023) and stores the results in output ###########
 ###############################################################################
 
+include("src/RunningFuns.jl")
+using .RunningFuns
+using .TestingFuns
+
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
+#-------------# 1. Run tests to check integrity of the package #--------------#
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
+
+@elapsed Main.TestingFuns.run_tests()
+
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
+#-----------# 2. Reproduce all results in Mahmood & Jetter (2023) #-----------#
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
+
 # Run all and store output files in output/
-# run()
+@elapsed Main.RunningFuns.run()
 
-# Reproduce specific table(s) or Figure(s)
-# reproduce_chosen_table_or_figure
 
-# Run tests
-# run_tests()
