@@ -10,12 +10,12 @@ makedocs(
     modules = [MahmoodJetter2023],
     format = Documenter.HTML(),
     pages = [
-        "Home" => "src/index.md",
+        "Home" => "index.md",
         "Modules" => [
-            "WranglingFuns" => "src/WranglingFuns.md",
-            "TablesFuns" => "src/TablesFuns.md",
-            "FiguresFuns" => "src/FiguresFuns.md",
-            "RunningFuns" => "src/RunningFuns.md",
+            "WranglingFuns" => "WranglingFuns.md",
+            "TablesFuns" => "TablesFuns.md",
+            "FiguresFuns" => "FiguresFuns.md",
+            "RunningFuns" => "RunningFuns.md",
         ],
     ]
 )
