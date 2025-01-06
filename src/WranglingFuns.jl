@@ -660,8 +660,12 @@ function wrangle_raw_mj_data(mjdata)
     
         # Format date
         # 5. Formatting Date (if necessary)
-        sort!(mjdata, :date)
-        # mjdata.date_str .= Dates.format(mjdata.date, "yyyy-mm-dd")    
+        #sort!(mjdata, :date)
+        # mjdata.date_str .= Dates.format(mjdata.date, "yyyy-mm-dd")
+        
+        # Reverting to integer encoding for dates to run regressions
+        epoch = Date("1960-01-01")
+        mjdata[!, :date] = Dates.value.(mjdata[!, :date] .- epoch)
     
         return mjdata
     
