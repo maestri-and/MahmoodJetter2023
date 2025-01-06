@@ -51,10 +51,6 @@ run()
         include("src/main.jl")
     end
 
-end
-
-export run_tests
-
 """
     run_tests()
 
