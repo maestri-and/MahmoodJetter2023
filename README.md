@@ -28,11 +28,13 @@ The replicator should expect the code to take approximately 3 minutes and 49 sec
   2. `TablesFuns.jl`: contains functions needed to produce results and generate Tables 1 and 2.
   3. `FiguresFuns.jl`: contains functions required to produce Figures 2 through 7.
   4. `main.jl`: the primary script orchestrating the execution of all functions.
+  5. `RunningFuns.jl`: contains functions to run the code for all ouptuts and tests
+  6. `MahmoodJetter2023.jl`: contains the main module to use the package
 - `./test`: contains test scripts to verify the functionality and integrity of the functions developed for the package.
 
 *This package also includes the file for the present `README.md`, as well as a `run.jl` script allowing to compile the code and generate all outputs.*
 
-### Overview of main modules
+### Overview of some key modules
 | Module Name   | Script            | Description                                                                             |
 |---------------|-------------------|-----------------------------------------------------------------------------------------|
 | WranglingFuns | WranglingFuns.jl | This script defines the functions used to prepare the data for the replication of the results |
@@ -62,27 +64,25 @@ The replication was conducted using **Julia 1.11.1**. Below are the package requ
 - **StatsPlots**: v0.15.7
 
 ## Instruction for replication
-**To be updated**
 
 To ensure reproducibility, configure your Julia environment to match the setup defined in this repository, and then execute the `run` and `run_tests` functions.
-1. Import `PackageName`
+1. Open Terminal
+2. Clone the remote repository: `git clone git@github.com:maestri-and/MahmoodJetter2023.git`
+3. Set the path: `cd MahmoodJetter2023`
+4. Open the Julia REPL
+5. Use the following prompt
     ```julia
-    using PackageName
+    using Pkg
+    Pkg.activate(".")
+    Pkg.instantiate()
     ```
-2. Set up the project environment:
-   ```julia
-   using Pkg
-   Pkg.activate(".")
-   Pkg.instantiate()
-   ```
-3. To replicate the results and run the unit tests, execute the following commands:
-    ```julia
-    # Run the full replication process
-    PackageName.run()
+6. To produce all outputs and run all tests
+    ```Julia
+    using MahmoodJetter2023
+    MahmoodJetter2023.RunningFuns.run()
+    MahmoodJetter2023.TestingFuns.run_tests()
+    ```
 
-    # Run the test suite to verify functionality
-    PackageName.run_tests()
-    ```
 ## Notes regarding Replicated Paper Outputs 
 
 ### List of replicated outputs
