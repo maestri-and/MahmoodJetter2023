@@ -106,7 +106,7 @@ The package replicates the following outputs from the paper:
 
 ### Comments on Output Accuracy
 
-All outputs produced by this package match exactly the results presented in the paper, with one exception: the HAC standard errors (SE) in Panel A for second-stage regressions. This discrepancy arises from computational differences between STATA and Julia packages when calculating standard errors for second-stage regressions. Specifically, the HAC SEs in Panel A produced by the `CovarianceMatrices package exhibit an average deviation of 22.7% (all smaller) compared to the paper’s results. This difference can be considered **minor** and does not affect the overall conclusions. 
+All outputs produced by this package match exactly the results presented in the paper, with one exception: the HAC standard errors (SE) in Panel A for second-stage regressions. This discrepancy arises from computational differences between STATA and Julia packages when calculating standard errors for second-stage regressions. Specifically, the HAC SEs in Panel A produced by the `CovarianceMatrices package exhibit an average deviation of 22.7% (all smaller) compared to the paper’s results. This difference can be considered **minor**, is restricted to Panel A HAC SEs **only**, and does not impact the regression coefficients or the overall conclusions. 
 
 Importantly, please note that for first-stage (Panel B) and OLS regressions (Panel D), all HAC SEs **align perfectly** with the paper’s outputs, including across all specified bandwidths and lags. Furthermore, all other regression results, including coefficients, HAC SEs, and confidence intervals used to replicate figures, are an **exact match** to the paper’s outputs, validating the package’s **high level of accuracy**.
 
