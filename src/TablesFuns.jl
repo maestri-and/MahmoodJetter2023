@@ -897,5 +897,4 @@ export replicate_sutex, generate_table1, create_multiple_model_table2,
         )
     end
 
-
 end
