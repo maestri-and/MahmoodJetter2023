@@ -4,7 +4,22 @@ include("Table_2_function.jl")
 #                   Generating Panel A
 ################################################################################################################################################################################################################################
 
-function generate_table2_panelA(df_clean)
+function generate_table2_panelA(df)
+    #################################################################################################################################################################################################################################
+    #                   Cleaning the data frame
+    #################################################################################################################################################################################################################################
+    variables_with_missing = [
+    :attacksin7, :drones, :gusts, :dows1, :dows2, :dows3, :dows4, :dows5, :dows6, :ramadan, 
+    :date, :months1, :months2, :months3, :months4, :months5, :months6, :months7, :months8, 
+    :months9, :months10, :months11, :mil_act1, :mil_act2, :mil_act3, :mil_act4, :mil_act5, 
+    :mil_act6, :mil_act7, :mil_act8, :mil_act9, :mil_act10, :mil_act11, :mil_act12, :mil_act13, 
+    :mil_act14, :attacks1, :attacks2, :attacks3, :attacks4, :attacks5, :attacks6, :attacks7, 
+    :attacks8, :attacks9, :attacks10, :attacks11, :attacks12, :attacks13, :attacks14, 
+    :tmean2_mir, :lnprec
+    ]
+
+    df_clean = dropmissing(df, variables_with_missing)
+    
     #################################################################################################################################################################################################################################
     #                   Panel B: first-stage results, predicting drone strikes on day t
     #################################################################################################################################################################################################################################
@@ -123,7 +138,7 @@ function generate_table2_panelA(df_clean)
         "Days t + 1 until t + 7 (2)",
         "Three-day averages (3)",
         "Six-day averages (4)",
-        "14-day averages"
+        "14-day averages (5)"
     ]
 
     # Define bandwidths for HAC SE (Fixed BW) and HAC SE (Variable BW)
@@ -151,6 +166,21 @@ end
 ################################################################################################################################################################################################################################
 
 function generate_table2_panelB(df)
+    #################################################################################################################################################################################################################################
+    #                   Cleaning the data frame
+    #################################################################################################################################################################################################################################
+    variables_with_missing = [
+    :attacksin7, :drones, :gusts, :dows1, :dows2, :dows3, :dows4, :dows5, :dows6, :ramadan, 
+    :date, :months1, :months2, :months3, :months4, :months5, :months6, :months7, :months8, 
+    :months9, :months10, :months11, :mil_act1, :mil_act2, :mil_act3, :mil_act4, :mil_act5, 
+    :mil_act6, :mil_act7, :mil_act8, :mil_act9, :mil_act10, :mil_act11, :mil_act12, :mil_act13, 
+    :mil_act14, :attacks1, :attacks2, :attacks3, :attacks4, :attacks5, :attacks6, :attacks7, 
+    :attacks8, :attacks9, :attacks10, :attacks11, :attacks12, :attacks13, :attacks14, 
+    :tmean2_mir, :lnprec
+    ]
+    
+    df_clean = dropmissing(df, variables_with_missing)
+
     #################################################################################################################################################################################################################################
     #                   Panel B: first-stage results, predicting drone strikes on day t
     #################################################################################################################################################################################################################################
@@ -210,7 +240,7 @@ function generate_table2_panelB(df)
         "Days t + 1 until t + 7 (2)",
         "Three-day averages (3)",
         "Six-day averages (4)",
-        "14-day averages"
+        "14-day averages (5)"
     ]
 
     # Define bandwidths for HAC SE (Fixed BW) and HAC SE (Variable BW)
@@ -238,6 +268,21 @@ end
 ################################################################################################################################################################################################################################
 
 function generate_table2_panelD(df)
+    #################################################################################################################################################################################################################################
+    #                   Cleaning the data frame
+    #################################################################################################################################################################################################################################
+    variables_with_missing = [
+    :attacksin7, :drones, :gusts, :dows1, :dows2, :dows3, :dows4, :dows5, :dows6, :ramadan, 
+    :date, :months1, :months2, :months3, :months4, :months5, :months6, :months7, :months8, 
+    :months9, :months10, :months11, :mil_act1, :mil_act2, :mil_act3, :mil_act4, :mil_act5, 
+    :mil_act6, :mil_act7, :mil_act8, :mil_act9, :mil_act10, :mil_act11, :mil_act12, :mil_act13, 
+    :mil_act14, :attacks1, :attacks2, :attacks3, :attacks4, :attacks5, :attacks6, :attacks7, 
+    :attacks8, :attacks9, :attacks10, :attacks11, :attacks12, :attacks13, :attacks14, 
+    :tmean2_mir, :lnprec
+    ]
+    
+    df_clean = dropmissing(df, variables_with_missing)
+
     #################################################################################################################################################################################################################################
     #                   Panel D: OLS results
     #################################################################################################################################################################################################################################
@@ -305,7 +350,7 @@ function generate_table2_panelD(df)
         "Days t + 1 until t + 7 (2)",
         "Three-day averages (3)",
         "Six-day averages (4)",
-        "14-day averages"
+        "14-day averages (5)"
     ]
 
     # Define lags for Newey-West SE

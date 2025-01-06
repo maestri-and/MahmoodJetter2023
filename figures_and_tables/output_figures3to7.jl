@@ -14,7 +14,7 @@ function generate_figure3(df_clean)
     ]
     title_text_attacks = "Subsequent terror attacks per day"
     x_axis_title_attacks = "Days after drone strikes"
-    output_file_attacks = joinpath(@__DIR__, "subsequent_terror_plot.png")
+    output_file_attacks = joinpath(@__DIR__, "subsequent_terror_plot.pdf")
     ylim_attacks = (-5, 10)  # Y-axis limits
     yticks_step_attacks = 5  # Step size for y-axis ticks
     xrotation_attacks = 90  # Vertical x-labels
@@ -36,7 +36,7 @@ function generate_figure3(df_clean)
     ]
     title_text_deaths = "Subsequent terror deaths per day"
     x_axis_title_deaths = "Days after drone strikes"
-    output_file_deaths = joinpath(@__DIR__, "subsequent_deaths_plot.png")
+    output_file_deaths = joinpath(@__DIR__, "subsequent_deaths_plot.pdf")
     ylim_deaths = (-10, 30)  # Y-axis limits
     yticks_step_deaths = 5  # Step size for y-axis ticks
     xrotation_deaths = 90  # Vertical x-labels
@@ -56,7 +56,7 @@ function generate_figure4(df_clean)
     ]
     title_text_drone = "(a) Frequency of TNI articles"
     x_axis_title_drone = " "
-    output_file_drone = joinpath(@__DIR__, "frequency_of_tni_articles.png")
+    output_file_drone = joinpath(@__DIR__, "frequency_of_tni_articles.pdf")
     ylim_drone = (-1, 10)  # Y-axis limits
     yticks_step_drone = 1  # Step size for y-axis ticks
     xrotation_drone = 0  
@@ -71,7 +71,7 @@ function generate_figure4(df_clean)
     ]
     title_text_sentiment = "(b) Sentiment of drone-related TNI articles"
     x_axis_title_sentiment = ""
-    output_file_sentiment = joinpath(@__DIR__, "sentiment_of_tni_articles.png")
+    output_file_sentiment = joinpath(@__DIR__, "sentiment_of_tni_articles.pdf")
     ylim_sentiment = (-0.5, 2.3)  # Y-axis limits
     yticks_step_sentiment = 0.5  # Step size for y-axis ticks
     xrotation_sentiment = 0 
@@ -98,7 +98,7 @@ function generate_figure5(df_clean)
     ]
     title_text_us = "(a) TNI articles mentioning US-related keyword"
     x_axis_title_us = " "
-    output_file_us = joinpath(@__DIR__, "tni_articles_us_keywords.png")
+    output_file_us = joinpath(@__DIR__, "tni_articles_us_keywords.pdf")
     ylim_us = (-1.5, 2.5)  # Y-axis limits
     yticks_step_us = 0.5  # Step size for y-axis ticks
     xrotation_us = 0
@@ -123,7 +123,7 @@ function generate_figure5(df_clean)
     ]
     title_text_terror = "(b) TNI articles mentioning terror-group-related keyword"
     x_axis_title_terror = " "
-    output_file_terror = joinpath(@__DIR__, "tni_articles_terror_keywords.png")
+    output_file_terror = joinpath(@__DIR__, "tni_articles_terror_keywords.pdf")
     ylim_terror = (-3, 1)  # Y-axis limits
     yticks_step_terror = 0.5  # Step size for y-axis ticks
     xrotation_terror = 0
@@ -141,7 +141,7 @@ function generate_figure6(df_clean)
     ]
     title_text_7 = "(a) Protests on days t + 1 until t + 7"
     x_axis_title_7 = " "
-    output_file_7 = joinpath(@__DIR__, "protests_on_days_t_plus_1_to_t_plus_7.png")
+    output_file_7 = joinpath(@__DIR__, "protests_on_days_t_plus_1_to_t_plus_7.pdf")
     ylim_7 = (-2, 5)  # Specify the y-axis limits
     yticks_step_7 = 1  # Specify the step size for y-axis ticks
     xrotation_7 = 0
@@ -150,7 +150,7 @@ function generate_figure6(df_clean)
     #Figure 6b: Protests on Days t + 1 to t + 7
     title_text_14 = "(b) Protests on days t + 1 until t + 14"
     x_axis_title_14 = " "
-    output_file_14 = joinpath(@__DIR__, "protests_on_days_t_plus_1_to_t_plus_14.png")
+    output_file_14 = joinpath(@__DIR__, "protests_on_days_t_plus_1_to_t_plus_14.pdf")
     ylim_14 = (-2, 5)  # Specify the y-axis limits
     yticks_step_14 = 1  # Specify the step size for y-axis ticks
     xrotation_14 = 0
@@ -171,7 +171,7 @@ function generate_figure7(df_clean)
     ]
     title_text_7 = "Google searches on days t + 1 until t + 7"
     x_axis_title_7 = " "
-    output_file_7 = joinpath(@__DIR__, "google_searches_days_t_plus_1_to_t_plus_7.png")
+    output_file_7 = joinpath(@__DIR__, "google_searches_days_t_plus_1_to_t_plus_7.pdf")
     ylim_7 = (-1, 2)  # Specify the y-axis limits
     yticks_step_7 = 0.5
     xrotation_7 = 0
@@ -180,7 +180,7 @@ function generate_figure7(df_clean)
     #Figure 7b: Google searches on days t + 1 until t + 14
     title_text_14 = "Google searches on days t + 1 until t + 14"
     x_axis_title_14 = " "
-    output_file_14 = joinpath(@__DIR__, "google_searches_days_t_plus_1_to_t_plus_14.png")
+    output_file_14 = joinpath(@__DIR__, "google_searches_days_t_plus_1_to_t_plus_14.pdf")
     ylim_14 = (-1, 2)  # Specify the y-axis limits
     yticks_step_14 = 0.5
     xrotation_14 = 0

@@ -1,5 +1,6 @@
 include("Temporary_data_cleaning.jl")
 include("output_table1.jl")
+include("outptut_table2.jl")
 include("output_figure2.jl")
 include("output_figures3to7.jl")
 
@@ -22,6 +23,11 @@ df, df_clean = prepare_data(file_path, variables_to_check)
 
 # Generate Table 1
 generate_table1(df)
+
+# Generate Tables 2
+generate_table2_panelA(df_clean)
+generate_table2_panelB(df_clean)
+generate_table2_panelD(df_clean)
 
 # Generate plots from Figure 2
 generate_figure2a(df)

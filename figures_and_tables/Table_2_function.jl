@@ -29,8 +29,8 @@ function create_multiple_model_table2(
     for (i, model) in enumerate(models)
         # Extract statistics
         coef_value = @sprintf("%.4f", coef(model)[2])  # Assuming the second coefficient is the one we need
-        hac_se_fixed = @sprintf("(%.4f)", stderror(BartlettKernel(bw_fixed[i]), model, prewhite=false)[2])  # Fixed bandwidth
-        hac_se_variable = @sprintf("[%.4f]", stderror(BartlettKernel(bw_variable[i]), model, prewhite=false)[2])  # Variable bandwidth
+        hac_se_fixed = @sprintf("(%.4f)", stderror(Bartlett(bw_fixed[i]), model, prewhite=false)[2])  # Fixed bandwidth
+        hac_se_variable = @sprintf("[%.4f]", stderror(Bartlett(bw_variable[i]), model, prewhite=false)[2])  # Variable bandwidth
 
         # Add the results as a column
         push!(table_content, [coef_value, hac_se_fixed, hac_se_variable])
@@ -87,7 +87,7 @@ function create_multiple_model_table2(
         write(io, "$table_subtitle\n\n")
         write(io, "Caption: $table_caption\n\n")
         # Use PrettyTables to write the tabular content
-        pretty_table(io, final_table, header, backend=Val(:text))  # Save as plain text
+        pretty_table(io, final_table, header = header, backend=Val(:text))  # Save as plain text
     end
     println("Text file successfully saved to: $text_file_path")
 end
