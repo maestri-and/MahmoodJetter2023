@@ -24,6 +24,7 @@ from Mahmood & Jetter (2023). It includes high-level functions that execute the 
 ```julia
 using RunningFuns
 run()
+```
 """
 
 export run

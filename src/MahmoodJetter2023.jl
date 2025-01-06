@@ -1,5 +1,12 @@
 module MahmoodJetter2023
 
-greet() = print("Hello World!")
+# Export submodules and functions
+export WranglingFuns, TablesFuns, FiguresFuns, RunningFuns
+
+# Include submodules
+include("WranglingFuns.jl")
+include("TablesFuns.jl")
+include("FiguresFuns.jl")
+include("RunningFuns.jl")
 
 end # module MahmoodJetter2023

@@ -1,15 +1,16 @@
+push!(LOAD_PATH,"../src/")
 using Documenter
 
 # Import the package
-using MJ2023Replicator
+using MahmoodJetter2023
 
 # Define the documentation
 makedocs(
-    sitename = "MJ2023Replicator",
-    modules = [MJ2023Replicator],
+    sitename = "MahmoodJetter2023",
+    modules = [MahmoodJetter2023],
     format = Documenter.HTML(),
     pages = [
-        "Home" => "index.md",
+        "Home" => "src/index.md",
         "Modules" => [
             "WranglingFuns" => "src/WranglingFuns.md",
             "TablesFuns" => "src/TablesFuns.md",

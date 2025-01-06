@@ -46,6 +46,7 @@ generate_figure2a(data)
 # Example: Running regressions and creating a plot
 results = run_regressions(data, "model_specification")
 plot = create_plot(results)
+```
 """
 
 
