@@ -1,0 +1,15 @@
+Table 1. Summary Statistics of Main Variables for all 4,018 Days from January 1, 2006 until December 31, 2016. All Variables are Measured at the Daily Level.
+
+┌────────────┬────────┬────────┬────────┬────────┐
+│   Variable │   Mean │     SD │    Min │    Max │
+│     String │ String │ String │ String │ String │
+├────────────┼────────┼────────┼────────┼────────┤
+│     drones │   0.10 │ (0.38) │   0.00 │   4.00 │
+│    attacks │   2.85 │ (2.98) │   0.00 │  38.00 │
+│      gusts │  23.92 │ (8.68) │   6.84 │  92.16 │
+│       wind │  11.77 │ (3.41) │   3.68 │  43.87 │
+│    mil_act │   1.01 │ (1.40) │   0.00 │  10.00 │
+│    ramadan │   0.08 │ (0.27) │   0.00 │   1.00 │
+│ tmean2_mir │  22.15 │ (8.63) │  -4.40 │  36.85 │
+│   prec_mir │   1.52 │ (3.79) │   0.00 │  59.60 │
+└────────────┴────────┴────────┴────────┴────────┘
