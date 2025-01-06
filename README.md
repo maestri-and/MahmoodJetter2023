@@ -63,6 +63,7 @@ The replication was conducted using **Julia 1.11.1**. Below are the package requ
 - **Statistics**: v1.11.1
 - **StatsPlots**: v0.15.7
 
+Code was last run on a standard Windows 11 laptop, with 6-core Intel Core i7-8750H processor and 32 GB RAM. Code was successfully tested out on MACOS (OS version: 15.1.1 (24B91)).
 ## Instruction for replication
 
 To ensure reproducibility, configure your Julia environment to match the setup defined in this repository, and then execute the `run` and `run_tests` functions.
