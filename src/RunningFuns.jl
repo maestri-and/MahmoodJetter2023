@@ -43,6 +43,7 @@ This function performs the following tasks:
 ```julia
 using RunningFuns
 run()
+```
 """
 
     function run()
@@ -67,6 +68,7 @@ produces consistent results.
 ```julia
 using TestingFuns
 run_tests()
+```
 """
 
 export run_tests
@@ -85,6 +87,7 @@ This function runs a comprehensive suite of tests to validate:
 ```julia
 using TestingFuns
 run_tests()
+```
 """
 
     function run_tests()

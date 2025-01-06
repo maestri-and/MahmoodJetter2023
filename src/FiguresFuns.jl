@@ -647,41 +647,39 @@ export binscatter_improved, generate_figure2a, generate_figure2b,
     """
     run_regressions_figure3(dependent_vars, time_window, additional_vars, df_clean)
 
-    Runs multiple regressions for a set of dependent variables, including both time-specific 
-    variables (e.g., "attacksin1", "attacksin2", ...) and variables with a specific syntax 
-    (e.g., "attacks15to21", "attacks15to28"). The function stores the regression results in 
-    a dictionary and uses robust standard errors.
+Runs multiple regressions for a set of dependent variables, including both time-specific 
+variables (e.g., "attacksin1", "attacksin2", ...) and variables with a specific syntax 
+(e.g., "attacks15to21", "attacks15to28"). The function stores the regression results in 
+a dictionary and uses robust standard errors.
 
-    # Arguments
-    - `dependent_vars::String`: The base name of the dependent variable (e.g., `"attacksin"`). This will be dynamically used to generate dependent variables like `"attacksin1"`, `"attacksin2"`, ..., `"attacksin14"`.
-    - `time_window::Int`: The time window for the regressions (not directly used in the function but can inform the range of time variables).
-    - `additional_vars::Vector{Tuple{String, String}}`: A vector of tuples where each tuple contains an outcome variable name (e.g., `"attacks15to21"`) and a label for the regression (e.g., `"attacks15to21_label"`).
-    - `df_clean::DataFrame`: The cleaned DataFrame containing the data for the regressions.
+# Arguments
+- `dependent_vars::String`: The base name of the dependent variable (e.g., `"attacksin"`). This will be dynamically used to generate dependent variables like `"attacksin1"`, `"attacksin2"`, ..., `"attacksin14"`.
+- `time_window::Int`: The time window for the regressions (not directly used in the function but can inform the range of time variables).
+- `additional_vars::Vector{Tuple{String, String}}`: A vector of tuples where each tuple contains an outcome variable name (e.g., `"attacks15to21"`) and a label for the regression (e.g., `"attacks15to21_label"`).
+- `df_clean::DataFrame`: The cleaned DataFrame containing the data for the regressions.
 
-    # Returns
-    A dictionary (`Dict`) where the keys are the names of the regression results (e.g., `"e1"`, `"e2"`, ..., for the time-specific variables, and the labels for the additional variables) and the values are the regression results (fitted models and other relevant output).
+# Returns
+A dictionary (`Dict`) where the keys are the names of the regression results (e.g., `"e1"`, `"e2"`, ..., for the time-specific variables, and the labels for the additional variables) and the values are the regression results (fitted models and other relevant output).
 
-    # Example
+# Example
 
-    ```julia
-    dependent_vars = "attacksin"  # Base name for dependent variables
-    time_window = 7
-    additional_vars = [
-        ("attacks15to21", "Attacks 15-21 days"),
-        ("attacks15to28", "Attacks 15-28 days")
-    ]
-    df_clean = DataFrame(...)  # Your cleaned dataset
+```julia
+dependent_vars = "attacksin"  # Base name for dependent variables
+time_window = 7
+additional_vars = [("attacks15to21", "Attacks 15-21 days"),("attacks15to28", "Attacks 15-28 days")]
+df_clean = DataFrame(...)  # Your cleaned dataset
 
-    results = run_regressions_figure3(dependent_vars, time_window, additional_vars, df_clean)
+results = run_regressions_figure3(dependent_vars, time_window, additional_vars, df_clean)
 
-    # Accessing results for specific regressions
-    results["e1"]  # Results for the regression with "attacksin1"
-    results["Attacks 15-21 days"]  # Results for the regression with "attacks15to21"
-    ```
+# Accessing results for specific regressions
+results["e1"]  # Results for the regression with "attacksin1"
+results["Attacks 15-21 days"]  # Results for the regression with "attacks15to21"
+```
 
-    # Notes
-    - This function is essentially the same as `run_regressions_figure` and only varies to take into account specific variable syntax
+# Notes
+- This function is essentially the same as `run_regressions_figure` and only varies to take into account specific variable syntax.
     """
+
     function run_regressions_figure3(dependent_vars, time_window, additional_vars, df_clean)
         results = Dict()
         
@@ -754,34 +752,36 @@ export binscatter_improved, generate_figure2a, generate_figure2b,
     """
     generate_figure3(df_clean)
 
-    Generates Figures 3a and 3b, which show the relationship between subsequent 
-    terror attacks and deaths per day after drone strikes. The function runs 
-    regressions for both attacks and deaths, extracts the relevant coefficients, 
-    and creates plots for each, saving them as PDF files.
+Generates Figures 3a and 3b, which show the relationship between subsequent 
+terror attacks and deaths per day after drone strikes. The function runs 
+regressions for both attacks and deaths, extracts the relevant coefficients, 
+and creates plots for each, saving them as PDF files.
 
-    # Arguments
-    - `df_clean::DataFrame`: The cleaned DataFrame containing the data for the regressions.
+# Arguments
+- `df_clean::DataFrame`: The cleaned DataFrame containing the data for the regressions.
 
-    # Returns
-    This function does not return a value. It generates and saves two plots:
-    1. **Figure 3a**: A plot showing subsequent terror attacks per day after drone strikes.
-    2. **Figure 3b**: A plot showing subsequent terror deaths per day after drone strikes.
+# Returns
+This function does not return a value. It generates and saves two plots:
+1. **Figure 3a**: A plot showing subsequent terror attacks per day after drone strikes.
+2. **Figure 3b**: A plot showing subsequent terror deaths per day after drone strikes.
 
-    Both plots are saved as PDF files in the `output` folder.
+Both plots are saved as PDF files in the `output` folder.
 
-    # Example
+# Example
 
-    ```julia
-    df_clean = DataFrame(...)  # Your cleaned dataset
-    generate_figure3(df_clean)
-    ```
-    # Notes
-    - The documentation for this function serves as a model for the following functions:
-    - generate_figure4
-    - generate_figure5
-    - generate_figure6
-    - generate_figure7
-    """
+```julia
+df_clean = DataFrame(...)  # Your cleaned dataset
+generate_figure3(df_clean)
+```
+# Notes
+- The documentation for this function serves as a model for the following functions:
+- generate_figure4
+- generate_figure5
+- generate_figure6
+- generate_figure7
+
+"""
+
     function generate_figure3(df_clean)
         # Figure 3a: Subsequent terror attacks per day
         dependent_vars_attacks = "attacks"
@@ -969,4 +969,10 @@ export binscatter_improved, generate_figure2a, generate_figure2b,
         process_analysis(dependent_vars, 14, labels, title_text_14, x_axis_title_14, ylim_14, yticks_step_14, xrotation_14, output_file_14, df_clean)
     end
 
+    """
+@docs
+run_regressions_figure3
+generate_figure3
+"""
 end
+

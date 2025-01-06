@@ -80,6 +80,7 @@ A `DataFrame` that contains the merged data from all the CSV files, joined on th
 dir = "data"
 csvnames = ["drones_data.csv", "anti-us_sentiment.csv", "GTD_and_SATP_data.csv", "news_sentiment.csv", "weather_data.csv"]
 merged_data = import_and_merge_csv_data(dir, csvnames, :date)
+```
 """
 
     function import_and_merge_csv_data(dir::String, csvnames::Vector{String}, mergecol::Symbol)
@@ -134,6 +135,7 @@ varlist = ["A", "B"]
 df_with_logs = def_logs(df, varlist)   # with default add_one=true
 
 df_no_correction = def_logs(df, varlist, add_one=false)  # without adding 1 for zero values
+```
 """
 
     function def_logs(df, varlist; add_one=true)
@@ -181,7 +183,7 @@ A `DataFrame` with missing values in the specified column replaced by zeros.
 df = DataFrame(A = [0, missing, 3], B = [1, 0, missing])
 varlist = ["A", "B"]
 df_with_zeros = replace_na_with_zeros(df, varlist)   
-
+```
 """
 
     function replace_na_with_zeros(df, varlist)
@@ -217,6 +219,7 @@ A `DataFrame` with the original columns renamed and the new standardized columns
 df = DataFrame(A = [1, 2, 3], B = [4, 5, 6])
 varlist = ["A", "B"]
 df_standardized = standardise_var(df, varlist)
+```
 """
 
     function standardise_var(df, varlist)
@@ -270,6 +273,7 @@ df = DataFrame(A = [1, 2, 3, 4, 5], B = [5, 4, 3, 2, 1])
 varlist = ["A", "B"]
 intervals = [2, 3]
 df_with_moving_avg = generate_moving_average(df, varlist, intervals, direction=:lags)
+```
 """
 
 function generate_moving_average(df, varlist, intervals; direction=:leads)
@@ -366,6 +370,7 @@ tdiffs = [1, 2]
 
 lagged_df = get_lags(df, varlist, tdiffs)
 println(lagged_df)
+```
 """
 
 function get_lags(df, varlist, tdiffs)
@@ -433,6 +438,7 @@ wrangle_raw_mj_data!(mjdata)
 
 # Display the first few rows of the processed data
 first(mjdata, 5)
+```
 """
 
 function wrangle_raw_mj_data(mjdata)

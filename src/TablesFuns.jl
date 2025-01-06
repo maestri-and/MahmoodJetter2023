@@ -228,6 +228,7 @@ export replicate_sutex, generate_table1, create_multiple_model_table2,
     # - output/summary_table.txt
     ```
     """
+    
     function generate_table1(df)
         # Specify the output folder (predefined, not passed as an argument)
         output_folder = "output"
@@ -895,4 +896,9 @@ export replicate_sutex, generate_table1, create_multiple_model_table2,
             "Fixed BW HAC SE account for bandwidth 1, while Variable BW HAC SE account for bandwidth 15 in columns (1) and (2), and for five, three and two lags in columns (3), (4) and (5), respectively. OLS (panel D) displays Newey–West standard errors specifically."
         )
     end
+
+    """
+@docs
+generate_table1
+"""
 end

@@ -13,13 +13,13 @@ using .TestingFuns
 #-------------# 1. Run tests to check integrity of the package #--------------#
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
 
-@elapsed Main.TestingFuns.run_tests()
+@elapsed MahmoodJetter2023.TestingFuns.run_tests()
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
 #-----------# 2. Reproduce all results in Mahmood & Jetter (2023) #-----------#
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
 
 # Run all and store output files in output/
-@elapsed Main.RunningFuns.run()
+@elapsed MahmoodJetter2023.RunningFuns.run()
 
 
