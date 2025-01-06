@@ -14,20 +14,21 @@ module RunningFuns
 """
 # RunningFuns Module
 
-This module provides the primary functionality to clean raw data and replicate the main results 
-from Mahmood & Jetter (2023). It includes high-level functions that execute the core replication tasks.
+This module provides the primary functionality to clean raw data, replicate the main results from Mahmood & Jetter (2023), and define and execute unit tests for the replication package. It includes high-level functions that execute the core replication tasks and ensure that the replication pipeline performs as expected and produces consistent results.
 
 ## Exports
 - `run`: Executes the main script to perform data cleaning and result replication.
+- `run_tests`: Runs the complete suite of unit tests.
 
 ## Usage
 ```julia
 using RunningFuns
 run()
+run_tests()
 ```
 """
 
-export run
+export run, run_tests
 
     """
     run()
@@ -52,25 +53,6 @@ run()
 
 end
 
-module TestingFuns
-
-"""
-# TestingFuns Module
-
-This module provides functionality to define and execute unit tests for the replication package 
-of Mahmood & Jetter (2023). It ensures that the replication pipeline performs as expected and 
-produces consistent results.
-
-## Exports
-- `run_tests`: Runs the complete suite of unit tests.
-
-## Usage
-```julia
-using TestingFuns
-run_tests()
-```
-"""
-
 export run_tests
 
 """
@@ -85,7 +67,7 @@ This function runs a comprehensive suite of tests to validate:
 
 # Usage
 ```julia
-using TestingFuns
+using RunningFuns
 run_tests()
 ```
 """
