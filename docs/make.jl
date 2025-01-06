@@ -15,6 +15,7 @@ makedocs(
             "TablesFuns" => "TablesFuns.md",
             "FiguresFuns" => "FiguresFuns.md",
             "RunningFuns" => "RunningFuns.md",
+            "TestingFuns" => "TestingFuns.md"
         ],
     ]
 )

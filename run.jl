@@ -7,12 +7,13 @@
 
 include("src/RunningFuns.jl")
 using .RunningFuns
+using .TestingFuns
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
 #-------------# 1. Run tests to check integrity of the package #--------------#
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
 
-@elapsed MahmoodJetter2023.RunningFuns.run_tests()
+@elapsed MahmoodJetter2023.TestingFuns.run_tests()
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
 #-----------# 2. Reproduce all results in Mahmood & Jetter (2023) #-----------#
